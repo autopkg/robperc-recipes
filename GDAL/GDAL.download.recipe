@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for a KyngChaos version of GDAL. Finds and downloads a GDAL release.
+		VERSION corresponds to files at http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-$VERSION.dmg
+		Examples include '1.7', '1.9', '1.11'
+	</string>
+    <key>Identifier</key>
+    <string>com.github.robperc.download.GDAL</string>
+    <key>Input</key>
+    <dict>
+        <key>VERSION</key>
+        <string>latest</string>
+        <key>NAME</key>
+        <string>GDAL</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>product_name</key>
+                <string>gdal</string>
+                <key>version</key>
+                <string>%VERSION%</string>
+            </dict>
+            <key>Processor</key>
+            <string>KyngChaosURLProvider</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>

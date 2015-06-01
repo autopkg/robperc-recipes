@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads GDAL .pkg and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.robperc.munki.GDAL</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>GDAL</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>GDAL is a translator library for raster and vector geospatial data formats</string>
+            <key>display_name</key>
+            <string>GDAL Complete</string>
+            <key>name</key>
+            <string>%NAME%</string>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/sh
+				paths=( "/Library/Application Support/GDAL" "/Library/Frameworks/GDAL.framework"
+				"/Library/Python/2.7/site-packages/gdal-py2.7.pth" "/Library/Frameworks/GEOS.framework"
+				"/Library/Frameworks/PROJ.framework" "/Library/Frameworks/SQLite3.framework"
+				"/Library/Python/2.7/site-packages/sqlite-py2.7.pth" "/Library/Frameworks/UnixImageIO.framework" )
+				receipts=( "org.gdal.gdal111-framework-lion" "net.refractions.geos-framework-lion"
+				"org.maptools.proj-framework-lion" "org.sqlite.sqlite3c-framework-snow" "com.kyngchaos.UnixImageIO-framework-E-lion" )
+
+				for i in ${paths[@]}; do
+					rm -rf "$i"
+				done
+
+				for j in ${receipts[@]}; do
+					pkgutil --forget "$j"
+				done
+				exit 0
+			</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.robperc.download.GDAL</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
