@@ -21,7 +21,7 @@ import urllib2
 from autopkglib import Processor, ProcessorError
 
 
-__all__ = ["QGISURLProvider"]
+__all__ = ["KyngChaosURLProvider"]
 
 
 KYNGCHAOS_BASE_URL = "http://www.kyngchaos.com/files/software"
