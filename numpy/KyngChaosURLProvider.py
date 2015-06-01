@@ -25,7 +25,6 @@ __all__ = ["KyngChaosURLProvider"]
 
 
 KYNGCHAOS_BASE_URL = "http://www.kyngchaos.com/files/software"
-               #"firefox/releases")
 
 class KyngChaosURLProvider(Processor):
     description = "Provides URL to the latest KyngChaos downloads."
