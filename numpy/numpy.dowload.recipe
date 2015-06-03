@@ -29,7 +29,7 @@
                 <string>%VERSION%</string>
             </dict>
             <key>Processor</key>
-            <string>KyngChaosURLProvider</string>
+            <string>com.github.autopkg.robperc.recipes.Processors/KyngChaosURLProvider</string>
         </dict>
         <dict>
             <key>Arguments</key>
