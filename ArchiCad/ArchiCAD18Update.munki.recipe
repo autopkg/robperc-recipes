@@ -141,7 +141,7 @@
 	
 					JAR="/tmp/%app_name%/Contents/Resources/Java/archive.jar"
 	
-					launchctl bsexec $LWPID java -jar "$JAR" -silent
+					launchctl bsexec $LWPID java -jar "$JAR" -W play.auto=YES -silent
 	
 					exit $?
 					</string>
