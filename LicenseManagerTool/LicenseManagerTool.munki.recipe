@@ -59,27 +59,7 @@
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-			<string>StopProcessingIf</string>
-			<key>Arguments</key>
-			<dict>
-				<key>predicate</key>
-				<string>(munki_repo_changed == FALSE)</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PlistEditor</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>output_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>plist_data</key>
+				<key>pkginfo</key>
 				<dict>
 					<key>name</key>
 					<string>%NAME%</string>
@@ -152,8 +132,8 @@
 					exit $?
 					</string>
 				</dict>
-			</dict>
-		</dict>
+            </dict>
+        </dict>
     </array>
 </dict>
 </plist>

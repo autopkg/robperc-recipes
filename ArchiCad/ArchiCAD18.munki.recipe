@@ -48,30 +48,8 @@
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-			<string>StopProcessingIf</string>
-			<key>Arguments</key>
-			<dict>
-				<key>predicate</key>
-				<string>(munki_repo_changed == FALSE)</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PlistEditor</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>output_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>plist_data</key>
+				<key>pkginfo</key>
 				<dict>
-					<key>name</key>
-					<string>%NAME%</string>
 					<key>description</key>
 					<string>ArchiCAD 18 offers a streamlined workflow solution, keeping architects in the state of the creative design flow with as little disruption as possible.</string>
 					<key>installer_type</key>
@@ -111,7 +89,7 @@
 						</dict>
 					</array>
 					<key>name</key>
-					<string>ArchiCAD18</string>
+					<string>%NAME%</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
 				
@@ -125,7 +103,9 @@
 					</string>
 					<key>requires</key>
 					<array>
-						<string>LicenseManagerTool</string>
+						<string>WibuKey</string>
+						<string>CodeMeter</string>
+						<string>JavaForOSX</string>
 					</array>
 					<key>uninstall_method</key>
 					<string>uninstall_script</string>
@@ -141,19 +121,8 @@
 					exit $?
 					</string>
 				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileMover</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>target</key>
-				<string>%MUNKI_REPO%/pkgsinfo/%MUNKI_REPO_SUBDIR%/ArchiCAD-%version%.plist</string>
-			</dict>
-		</dict>
+            </dict>
+        </dict>
     </array>
 </dict>
 </plist>

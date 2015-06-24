@@ -11,7 +11,7 @@
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps</string>
         <key>NAME</key>
-        <string>ArchiCAD18</string>
+        <string>ArchiCAD18Update</string>
 		<key>URL</key>
 		<string>http://www.graphisoft.com</string>
     </dict>
@@ -70,30 +70,8 @@
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-			<string>StopProcessingIf</string>
-			<key>Arguments</key>
-			<dict>
-				<key>predicate</key>
-				<string>(munki_repo_changed == FALSE)</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PlistEditor</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>output_plist_path</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>plist_data</key>
+				<key>pkginfo</key>
 				<dict>
-					<key>name</key>
-					<string>%NAME%</string>
 					<key>description</key>
 					<string>ArchiCAD 18 offers a streamlined workflow solution, keeping architects in the state of the creative design flow with as little disruption as possible.</string>
 					<key>installer_type</key>
@@ -133,16 +111,16 @@
 						</dict>
 					</array>
 					<key>name</key>
-					<string>ArchiCAD18Update</string>
+					<string>%NAME%</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
-				
+			
 					LWPID=`ps axww | grep loginwindow | grep -v grep | awk '{print $1}'`
-	
+
 					JAR="/tmp/%app_name%/Contents/Resources/Java/archive.jar"
-	
+
 					launchctl bsexec $LWPID java -jar "$JAR" -W play.auto=YES -silent
-	
+
 					exit $?
 					</string>
 					<key>update_for</key>
@@ -150,19 +128,8 @@
 						<string>ArchiCAD18</string>
 					</array>
 				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileMover</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source</key>
-				<string>%pkginfo_repo_path%</string>
-				<key>target</key>
-				<string>%MUNKI_REPO%/pkgsinfo/%MUNKI_REPO_SUBDIR%/ArchiCAD18Update-%version%.plist</string>
-			</dict>
-		</dict>
+            </dict>
+        </dict>
     </array>
 </dict>
 </plist>
