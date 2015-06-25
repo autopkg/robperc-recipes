@@ -98,8 +98,13 @@
 					JAR="/tmp/ArchiCAD Installer.app/Contents/Resources/Java/archive.jar"
 	
 					launchctl bsexec $LWPID java -jar "$JAR" -W play.auto=YES -silent
-	
-					exit $?
+					
+					success=$?
+					
+					rm -f "/Users/$USER/Desktop/ArchiCAD 19"
+					rm -f "/Users/$USER/Desktop/BIMx for ArchiCAD 19"
+					
+					exit $success
 					</string>
 					<key>requires</key>
 					<array>
