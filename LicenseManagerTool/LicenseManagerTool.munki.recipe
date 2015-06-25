@@ -116,7 +116,7 @@
 					<array>
 						<string>WkInstall</string>
 						<string>CmInstall</string>
-						<string>AppleJava6</string>
+						<string>OracleJava8</string>
 					</array>
 					<key>uninstall_method</key>
 					<string>uninstall_script</string>
