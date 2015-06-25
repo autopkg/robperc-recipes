@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 # Copyright 2015 Rob percival
-# Based on Greg Neagle's iconimporter tool code
+# Built on Greg Neagle's iconimporter tool code
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
