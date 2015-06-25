@@ -13,7 +13,7 @@
         <key>NAME</key>
         <string>ArchiCAD19</string>
 		<key>URL</key>
-		<string>http://securecontent.graphisoft.netdna-cdn.com/AC/19/USA/AC/AC19-3003-USA.dmg?st=3OvxSATB8am2_hB2toJxfQ&amp;e=1435273860</string>
+		<string>http://gscdn.graphisoft.com/cdn/AC/19/USA/AC/AC19-3003-USA.dmg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
