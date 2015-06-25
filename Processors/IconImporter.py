@@ -24,21 +24,20 @@ from munkilib import FoundationPlist
 from munkilib import iconutils
 from autopkglib import Processor, ProcessorError
 
-
 __all__ = ["IconImporter"]
 
 class IconImporter(Processor):
-    description = "Tries to find and import icon(s) from target into icons folder of munki repo. Requires Greg Neagle's iconimporter munki tool"
+    description = "Tries to find and import icon(s) from target into icons folder of munki repo. Built on Greg Neagle's iconimporter."
     input_variables = {
+        "MUNKI_REPO": {
+            "required": True,
+            "description": 
+                "Path to target repo.",
+        },
         "name": {
             "required": True,
             "description": 
                 "Name of target to fetch icon(s) for. Should correspond to value of name key in pkginfo",
-        },
-        "repo": {
-            "required": True,
-            "description": 
-                "Path to target repo.",
         },
         "force": {
             "required": False,
@@ -51,7 +50,7 @@ class IconImporter(Processor):
     __doc__ = description
     
     def main(self):
-        repo = self.env["repo"]
+        repo = self.env["MUNKI_REPO"]
         name = self.env["name"]
         opts = '-i %s' %(name,)
         force = self.env.get("force", False)
@@ -60,6 +59,16 @@ class IconImporter(Processor):
             itemlist=[name])
         # clean up
         munkicommon.cleanUpTmpDir()
+
+"""
+The following code is from Greg Neagle's iconimporter tool. 
+Unfortunately it is not currently packaged by default with 
+munkitools so I can't import it from there like the rest of the
+modules...
+"""
+
+PREFSNAME = 'com.googlecode.munki.munkiimport.plist'
+PREFSPATH = os.path.expanduser(os.path.join(u'~/Library/Preferences', PREFSNAME))
         
 def generate_png_from_copy_from_dmg_item(install_item, repo_path):
     dmgpath = os.path.join(
@@ -85,13 +94,6 @@ def generate_png_from_copy_from_dmg_item(install_item, repo_path):
         else:
             print_utf8(u'\tNo application icons found.')
         munkicommon.unmountdmg(mountpoint)
-
-
-"""
-The following code is from Greg Neagle's iconimporter tool. 
-Unfortunately it is not currently packaged by default with 
-munkitools so I can't reference it there with a subprocess...
-"""
 
 def generate_pngs_from_installer_pkg(install_item, repo_path):
     icon_paths = []
@@ -210,10 +212,6 @@ def pref(prefname):
         return _prefs[prefname]
     else:
         return None
-
-
-PREFSNAME = 'com.googlecode.munki.munkiimport.plist'
-PREFSPATH = os.path.expanduser(os.path.join(u'~/Library/Preferences', PREFSNAME))
 
 if __name__ == "__main__":
     processor = IconImporter()
