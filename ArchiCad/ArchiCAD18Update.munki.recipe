@@ -27,7 +27,7 @@
 				<key>url</key>
 				<string>%URL%/downloads/archicad/updates/</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;path&gt;/downloads/archicad/updates/[^"]*)</string>
+				<string>(?P&lt;path&gt;/downloads/archicad/updates/AC18[^"]*)</string>
 			</dict>
 		</dict>
 		<dict>
