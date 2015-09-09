@@ -27,7 +27,7 @@
 				<key>url</key>
 				<string>%URL%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;path&gt;http://gscdn.graphisoft.com/cdn/LMT/18/INT/License_Manager_Tool[^"]*)</string>
+				<string>(?P&lt;path&gt;http://gscdn.graphisoft.com/cdn/LMT/INT/License_Manager_Tool[^"]*)</string>
 			</dict>
 		</dict>
 		<dict>
@@ -114,9 +114,9 @@
 					</string>
 					<key>requires</key>
 					<array>
-						<string>WkInstall</string>
-						<string>CmInstall</string>
-						<string>OracleJava8</string>
+						<string>AppleJava6</string>
+						<string>WibuKey</string>
+						<string>CodeMeter</string>
 					</array>
 					<key>uninstall_method</key>
 					<string>uninstall_script</string>
