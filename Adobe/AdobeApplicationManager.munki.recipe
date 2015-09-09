@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads Adobe Application Manager dmg and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.robperc.munki.AdobeApplicationManager</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>AdobeApplicationManager</string>
+		<key>URL</key>
+		<string>http://download.adobe.com/pub/adobe/creativesuite/cc/mac/ApplicationManager9.0_all.dmg</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+        <dict>
+	        <key>Processor</key>
+	        <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>munkiimport_appname</key>
+                <string>Adobe Application Manager 9.0/Install.app</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkginfo</key>
+				<dict>
+					<key>description</key>
+					<string>Installs the Adobe Application Manager that is included with Adobe Creative Cloud, Adobe Creative Suite 6, Adobe Creative Suite 5.5 products.</string>
+					<key>installer_type</key>
+					<string>copy_from_dmg</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleName</key>
+							<string>Adobe Application Manager</string>
+							<key>CFBundleShortVersionString</key>
+							<string>9.0.0.108</string>
+							<key>CFBundleVersion</key>
+							<string>9.0.0.108</string>
+							<key>minosversion</key>
+							<string>10.5</string>
+							<key>path</key>
+							<string>/Applications/Utilities/Adobe Application Manager/core/Adobe Application Manager.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
+					<key>items_to_copy</key>
+					<array>
+						<dict>
+							<key>destination_path</key>
+							<string>/tmp</string>
+							<key>source_item</key>
+							<string>Adobe Application Manager 9.0</string>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>%NAME%</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/sh
+					/tmp/Adobe\ Application\ Manager\ 9.0/Install.app/Contents/MacOS/Install --mode=silent
+					exit $?
+					</string>
+					<key>uninstall_method</key>
+					<string>uninstall_script</string>
+					<key>uninstall_script</key>
+					<string>#!/bin/sh
+					rm -rf Applications/Utilities/Adobe\ Application\ Manager
+					exit $?
+					</string>
+					<key>uninstallable</key>
+					<true/>
+					<key>version</key>
+					<string>9.0.0.108</string>
+				</dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
