@@ -77,10 +77,6 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>pkginfo</key>
 				<dict>
-					<key>description</key>
-					<string>%description%</string>
-					<key>name</key>
-					<string>%NAME%</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
 					$license_dir="/Library/Application Support/McNeel/Rhinoceros/License Manager/Licenses"
