@@ -30,7 +30,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://www.rhino3d.com/download</string>
+				<string>http://www.rhino3d.com/download</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;macpage&gt;https://www.rhino3d.com/download/rhino-for-mac/[^"]+)</string>
 			</dict>
