@@ -40,7 +40,7 @@ class RhinoURLProvider(Processor):
     def main(self):
         # Determine base_url, version, product_name.
         release_url = self.env["release_url"]
-        release = release_path.split('/')[-2]
+        release = release_url.split('/')[-2]
         version = release.split("release-")[1]
         version = '.'.join(version.split('-'))
         major = '.'.join(version.split('.')[:-1])
