@@ -18,9 +18,9 @@ import re
 
 from autopkglib import Processor, ProcessorError
 
-__all__ = ["RhinoURLMaker"]
+__all__ = ["RhinoURLProvider"]
 
-class RhinoURLMaker(Processor):
+class RhinoURLProvider(Processor):
     description = "Returns a URL to latest Rhino release download using information \
     scraped from the Rhino release notes page."
     input_variables = {
@@ -49,5 +49,5 @@ class RhinoURLMaker(Processor):
     
 
 if __name__ == "__main__":
-    processor = RhinoURLMaker()
+    processor = RhinoURLProvider()
     processor.execute_shell()
