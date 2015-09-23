@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads Rhinoceros for Mac dmg and imports into Munki</string>
+    <key>Identifier</key>
+    <string>com.github.robperc.munki.Rhinoceros</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>Rhinoceros</string>
+        <key>pkginfo</key>
+        <dict>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>description</key>
+			<string>Rhino can create, edit, analyze, document, render, animate, and translate NURBS curves, surfaces, and solids, point clouds, and polygon meshes.</string>
+		</dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://www.rhino3d.com/download</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;macpage&gt;https://www.rhino3d.com/download/rhino-for-mac/[^"]+)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%macpage%</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;release&gt;http://discourse.mcneel.com/t/[^"]+)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+            <string>com.github.autopkg.robperc.recipes.Processors/RhinoURLMaker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>release_url</key>
+				<string>%release%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%rhino_url%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+        <dict>
+	        <key>Processor</key>
+	        <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/CmInstall.pkg</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+                <key>pkginfo</key>
+				<dict>
+					<key>description</key>
+					<string>%description%</string>
+					<key>name</key>
+					<string>%NAME%</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/sh
+					$license_dir="/Library/Application Support/McNeel/Rhinoceros/License Manager/Licenses"
+					mkdir -p "$license_dir"
+					chmod 777 "$license_dir"
+					exit $?
+					</string>
+				</dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
