@@ -48,7 +48,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-            <string>com.github.autopkg.robperc.recipes.Processors/RhinoURLMaker</string>
+			<string>RhinoURLProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>release_url</key>
