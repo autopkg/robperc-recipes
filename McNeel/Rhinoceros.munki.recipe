@@ -77,13 +77,14 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>pkginfo</key>
 				<dict>
+					<key>description</key>
+					<string>Rhino can create, edit, analyze, document, render, animate, and translate NURBS curves, surfaces, and solids, point clouds, and polygon meshes.</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
 					$license_dir="/Library/Application Support/McNeel/Rhinoceros/License Manager/Licenses"
 					mkdir -p "$license_dir"
 					chmod 777 "$license_dir"
-					exit $?
-					</string>
+					exit $?</string>
 				</dict>
             </dict>
         </dict>
