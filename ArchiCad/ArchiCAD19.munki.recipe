@@ -108,6 +108,7 @@
 					</string>
 					<key>requires</key>
 					<array>
+						<string>JavaForOSX</string>
 						<string>WibuKey</string>
 						<string>CodeMeter</string>
 						<string>OracleJava8</string>
