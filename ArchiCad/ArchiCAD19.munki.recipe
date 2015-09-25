@@ -111,7 +111,6 @@
 						<string>JavaForOSX</string>
 						<string>WibuKey</string>
 						<string>CodeMeter</string>
-						<string>OracleJava8</string>
 					</array>
 					<key>uninstall_method</key>
 					<string>uninstall_script</string>
