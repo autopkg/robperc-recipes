@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads MEPModeler17 dmg and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.robperc.munki.MEPModeler17</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>MEPModeler17</string>
+		<key>URL</key>
+		<string>http://download.graphisoft.com/ftp/techsupport/downloads/MEP/MEP17/MEP17-USA.dmg</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+        <dict>
+	        <key>Processor</key>
+	        <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkginfo</key>
+				<dict>
+					<key>blocking_applications</key>
+					<array>
+					        <string>ArchiCAD17</string>
+					</array>
+					<key>description</key>
+					<string>MEP Modeler 17 is an Add-On to ArchiCAD. Firms using ArchiCAD can use the MEP Modeler to create and edit 3D model-based MEP networks (ductwork, pipework and cabling) and coordinate them within the ArchiCAD Virtual Building.</string>
+					<key>installer_type</key>
+					<string>copy_from_dmg</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>path</key>
+							<string>/Applications/GRAPHISOFT/ArchiCAD 17/MEP Library 17/MEP Library 17.lcf</string>
+							<key>type</key>
+							<string>file</string>
+						</dict>
+					</array>
+					<key>items_to_copy</key>
+					<array>
+						<dict>
+							<key>destination_path</key>
+							<string>/tmp</string>
+							<key>group</key>
+							<string>admin</string>
+							<key>mode</key>
+							<string>go-w</string>
+							<key>source_item</key>
+							<string>MEP Modeler Installer.app</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>%NAME%</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/sh
+			
+					LWPID=`ps axww | grep loginwindow | grep -v grep | awk '{print $1}'`
+
+					JAR="/tmp/MEP Modeler Installer.app/Contents/Resources/Java/archive.jar"
+
+					launchctl bsexec $LWPID java -jar "$JAR" -W play.auto=YES -silent
+
+					exit $?
+					</string>
+					<key>update_for</key>
+					<array>
+						<string>ArchiCAD17</string>
+					</array>
+				</dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
