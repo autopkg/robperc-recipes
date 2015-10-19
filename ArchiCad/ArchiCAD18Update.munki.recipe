@@ -72,6 +72,10 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
 				<key>pkginfo</key>
 				<dict>
+					<key>blocking_applications</key>
+					<array>
+					        <string>ArchiCAD18</string>
+					</array>
 					<key>description</key>
 					<string>ArchiCAD 18 offers a streamlined workflow solution, keeping architects in the state of the creative design flow with as little disruption as possible.</string>
 					<key>installer_type</key>
