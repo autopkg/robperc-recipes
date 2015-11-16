@@ -43,7 +43,7 @@ class RhinoURLProvider(Processor):
         release = release_url.split('/')[-2]
         version = release.split("release-")[1]
         version = '.'.join(version.split('-'))
-        major = '.'.join(version.split('.')[:-1])
+        major = str(float('.'.join(version.split('.')[:-1])))
         url = "http://files.mcneel.com/Releases/Rhino/MAJOR/Mac/Rhinoceros_VERSION.dmg".replace("MAJOR", major).replace("VERSION", version)
         self.env["rhino_url"] = url
     
