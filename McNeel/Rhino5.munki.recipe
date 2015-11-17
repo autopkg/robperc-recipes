@@ -81,6 +81,12 @@
 					<string>Rhino5</string>
 					<key>description</key>
 					<string>Rhino can create, edit, analyze, document, render, animate, and translate NURBS curves, surfaces, and solids, point clouds, and polygon meshes.</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/sh
+						mkdir -p "/Library/Application Support/McNeel/Rhinoceros/License Manager/Licenses"
+						chmod 777 "/Library/Application Support/McNeel/Rhinoceros/License Manager/Licenses"
+						exit $?
+					</string>
 				</dict>
             </dict>
         </dict>
