@@ -114,7 +114,7 @@
 					</string>
 					<key>requires</key>
 					<array>
-						<string>AppleJava6</string>
+						<string>JavaForOSX</string>
 						<string>WibuKey</string>
 						<string>CodeMeter</string>
 					</array>
