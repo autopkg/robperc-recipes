@@ -32,7 +32,7 @@ class StringSplitter(Processor):
     def main(self):
         string = self.env["string"]
         delim  = self.env["delimiter"]
-        index  = self.env["index"]
+        index  = int(self.env["index"])
 
         subs   = string.split(delim)
         if index > len(subs):

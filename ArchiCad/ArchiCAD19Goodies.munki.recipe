@@ -29,7 +29,7 @@
 				<key>url</key>
 				<string>%URL%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;vers&gt;http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/USA/Goodies_Installer-19-USA-([\d]+).dmg)</string>
+				<string>(?P&lt;vers_str&gt;Goodies_Installer-19-USA-[\d]+.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
@@ -41,6 +41,19 @@
 				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%vers%.dmg</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>StringSplitter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>string</key>
+				<string>%vers_str%</string>
+				<key>delimiter</key>
+				<string>-</string>
+				<key>index</key>
+				<string>3</string>
 			</dict>
 		</dict>
 		<dict>
