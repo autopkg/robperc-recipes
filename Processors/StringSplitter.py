@@ -23,8 +23,8 @@ class StringSplitter(Processor):
     }
     output_variables = {
         "out_string": {
-            "description": "Substring at specified index to return."
-        }
+            "description": "Substring at specified index to return.",
+        },
     }
     
     __doc__ = description
@@ -37,7 +37,7 @@ class StringSplitter(Processor):
         subs   = string.split(delim)
         if index > len(subs):
             index = -1
-        return subs[index]
+        self.env["out_string"] = subs[index]
 
 if __name__ == "__main__":
     processor = StringSplitter()

@@ -13,7 +13,7 @@
         <key>NAME</key>
         <string>ArchiCAD19Goodies</string>
         <key>COUNTRY</key>
-        <string>USA</string>
+        <string>FRA</string>
 		<key>URL</key>
 		<string>http://www.graphisoft.com/downloads/</string>
     </dict>
@@ -34,7 +34,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>com.github.autopkg.robperc.recipes.Processors/StringSplitter</string>
+			<string>StringSplitter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>string</key>
@@ -51,7 +51,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%out_string%.dmg</string>
+				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%out_string%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
