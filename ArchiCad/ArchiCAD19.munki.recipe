@@ -12,8 +12,10 @@
         <string>apps</string>
         <key>NAME</key>
         <string>ArchiCAD19</string>
+        <key>COUNTRY</key>
+        <string>USA</string>
 		<key>URL</key>
-		<string>http://gscdn.graphisoft.com/cdn/AC/19/USA/AC/AC19-3003-USA.dmg</string>
+		<string>http://gscdn.graphisoft.com/cdn/AC/19/%COUNTRY%/AC/AC19-3003-%COUNTRY%.dmg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
