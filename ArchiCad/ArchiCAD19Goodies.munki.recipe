@@ -12,6 +12,8 @@
         <string>apps</string>
         <key>NAME</key>
         <string>ArchiCAD19Goodies</string>
+        <key>COUNTRY</key>
+        <string>USA</string>
 		<key>URL</key>
 		<string>http://www.graphisoft.com/downloads/</string>
     </dict>
@@ -27,7 +29,7 @@
 				<key>url</key>
 				<string>%URL%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;path&gt;http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/USA/Goodies_Installer[^\.]*.dmg)</string>
+				<string>(?P&lt;vers&gt;http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/USA/Goodies_Installer-19-USA-([\d]+).dmg)</string>
 			</dict>
 		</dict>
 		<dict>
@@ -36,7 +38,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%path%</string>
+				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%vers%.dmg</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
