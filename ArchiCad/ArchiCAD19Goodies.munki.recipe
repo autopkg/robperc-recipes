@@ -34,7 +34,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>StringSplitter</string>
+			<string>com.github.autopkg.robperc.recipes.Processors/StringSplitter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>string</key>
