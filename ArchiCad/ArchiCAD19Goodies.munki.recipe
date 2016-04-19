@@ -34,18 +34,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%vers%.dmg</string>
-				<key>filename</key>
-				<string>%NAME%.dmg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>StringSplitter</string>
+			<string>com.github.autopkg.robperc.recipes.Processors/StringSplitter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>string</key>
@@ -54,6 +43,17 @@
 				<string>-</string>
 				<key>index</key>
 				<string>3</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://www.graphisoft.com/ftp/techsupport/downloads/goodies19/%COUNTRY%/Goodies_Installer-19-%COUNTRY%-%out_string%.dmg</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
