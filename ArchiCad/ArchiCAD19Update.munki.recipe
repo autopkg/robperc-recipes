@@ -38,7 +38,7 @@
 				<key>url</key>
 				<string>%URL%%path%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;update&gt;http://dl.graphisoft.com/ftp/techsupport/downloads/[^\.]*.dmg)</string>
+				<string>(?P&lt;update&gt;http://dl.graphisoft.com/ftp/techsupport/downloads/ac19/ArchiCAD-19-Update-.*\.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
