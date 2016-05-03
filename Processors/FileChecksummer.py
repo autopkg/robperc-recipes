@@ -5,7 +5,7 @@ import json
 
 __all__ = ["FileChecksummer"]
 
-class StringSplitter(Processor):
+class FileChecksummer(Processor):
     description = "Returns MD5 checksum for specified file."
     input_variables = {
         "file_path": {

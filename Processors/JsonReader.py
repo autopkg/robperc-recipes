@@ -5,7 +5,7 @@ import json
 
 __all__ = ["JsonReader"]
 
-class StringSplitter(Processor):
+class JsonReader(Processor):
     description = "Reads JSON file and returns value for specified key."
     input_variables = {
         "json_file": {
