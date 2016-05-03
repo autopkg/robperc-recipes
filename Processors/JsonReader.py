@@ -29,7 +29,7 @@ class JsonReader(Processor):
         json_file = self.env["json_file"]
         json_key  = self.env["json_key"]
         
-        self.env["json_value"] = json.load(open("json_file"))[json_key]
+        self.env["json_value"] = json.load(open(json_file))[json_key]
 
 if __name__ == "__main__":
     processor = JsonReader()
