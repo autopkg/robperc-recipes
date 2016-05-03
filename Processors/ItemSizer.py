@@ -24,7 +24,7 @@ class ItemSizer(Processor):
     def main(self):
         item_path = self.env["item_path"]
         
-        self.env["item_size"] = int(os.path.getsize(item_path) / 1024)
+        self.env["item_size"] = str(os.path.getsize(item_path) / 1024)
 
 if __name__ == "__main__":
     processor = ItemSizer()
