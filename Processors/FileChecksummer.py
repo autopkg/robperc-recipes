@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from autopkglib import Processor, ProcessorError
-import json
+import hashlib
 
 __all__ = ["FileChecksummer"]
 
