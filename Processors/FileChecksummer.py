@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from autopkglib import Processor, ProcessorError
+import os
 import hashlib
 
 __all__ = ["FileChecksummer"]
@@ -14,7 +15,7 @@ class FileChecksummer(Processor):
         },
     }
     output_variables = {
-        "file_checksum": {
+        "{file_name}_checksum": {
             "description": "MD5 checksum of specified file.",
         },
     }
@@ -23,8 +24,8 @@ class FileChecksummer(Processor):
     
     def main(self):
         file_path = self.env["file_path"]
-        
-        self.env["file_checksum"] = hashlib.md5(open(file_path, 'rb').read()).hexdigest()
+        output_var = os.path.basename(file_path) + "_checksum"
+        self.env[output_var] = hashlib.md5(open(file_path, 'rb').read()).hexdigest()
 
 if __name__ == "__main__":
     processor = FileChecksummer()
