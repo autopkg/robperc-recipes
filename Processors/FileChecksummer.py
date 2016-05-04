@@ -24,7 +24,7 @@ class FileChecksummer(Processor):
     
     def main(self):
         file_path = self.env["file_path"]
-        output_var = os.path.basename(file_path) + "_checksum"
+        output_var = os.path.basename(file_path).split(".")[0] + "_checksum"
         self.env[output_var] = hashlib.md5(open(file_path, 'rb').read()).hexdigest()
 
 if __name__ == "__main__":
