@@ -118,14 +118,27 @@
 					<string>%NAME%</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
+					
+					JAR="/tmp/%app_name%/Contents/Resources/Java/archive.jar"
+					
+					darwin_major=`/usr/bin/uname -r | /usr/bin/cut -f 1 -d .`
+					
+					if [ $darwin_major -gt 14 ]
+					then
+					
+					launchctl asuser 0 java -jar "$JAR" -silent -W play.auto=YES
+
+    					exit $?
+			
+					else
 			
 					LWPID=`ps axww | grep loginwindow | grep -v grep | awk '{print $1}'`
-
-					JAR="/tmp/%app_name%/Contents/Resources/Java/archive.jar"
 
 					launchctl bsexec $LWPID java -jar "$JAR" -W play.auto=YES -silent
 
 					exit $?
+					
+					fi
 					</string>
 					<key>update_for</key>
 					<array>
