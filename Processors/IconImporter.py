@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+from __future__ import print_function
 import sys
 sys.path.append('/usr/local/munki')
 import os
@@ -194,12 +196,12 @@ def generate_pngs_from_munki_items(repo_path, force=False, itemlist=None):
 
 def print_utf8(text):
     '''Print Unicode text as UTF-8'''
-    print text.encode('UTF-8')
+    print(text.encode('UTF-8'))
 
 
 def print_err_utf8(text):
     '''Print Unicode text to stderr as UTF-8'''
-    print >> sys.stderr, text.encode('UTF-8')
+    print(text.encode('UTF-8'), file=sys.stderr)
 
 
 def pref(prefname):
