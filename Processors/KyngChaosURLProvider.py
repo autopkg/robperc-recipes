@@ -60,8 +60,8 @@ class KyngChaosURLProvider(Processor):
 
         product_dir = ''
 
-		# Expand product name to full product name (IE: gdal -> GDAL_Complete)
-		# and get product directory from product type
+        # Expand product name to full product name (IE: gdal -> GDAL_Complete)
+        # and get product directory from product type
         if product_name == 'qgis':
             product_dir = product_name
             product_name = product_name.upper()
@@ -82,7 +82,7 @@ class KyngChaosURLProvider(Processor):
 
         filename = product_name + '-' + version + '.dmg'
 
-		# Construct download URL.
+        # Construct download URL.
         dmg_url = "/".join((base_url, product_dir, filename))
 
         # Try to open download link.

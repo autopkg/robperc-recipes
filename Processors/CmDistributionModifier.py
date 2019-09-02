@@ -66,23 +66,23 @@ XML = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
         <search id="pkmktoken24-0" type="script" script="pkmktoken24_combined()">
             <script>
 function pkmktoken24_combined() {
-	function pkmk_add_results_to_array(results, array) {
-		for(i = 0; i &lt; results.length; i++)
-			array.push(results[i]);
-	}
-	var result = new Array();
-	var search;
-	search = my.search.results['pkmktoken24-1'];
-	if(search) pkmk_add_results_to_array(search, result);
-	return result;
+    function pkmk_add_results_to_array(results, array) {
+        for(i = 0; i &lt; results.length; i++)
+            array.push(results[i]);
+    }
+    var result = new Array();
+    var search;
+    search = my.search.results['pkmktoken24-1'];
+    if(search) pkmk_add_results_to_array(search, result);
+    return result;
 }
 </script>
         </search>
         <search type="script" id="pkmktoken24" script="pkmktoken24_final()">
             <script>
 function pkmktoken24_final() {
-	var combined = my.search.results['pkmktoken24-0'];
-	return combined;
+    var combined = my.search.results['pkmktoken24-0'];
+    return combined;
 }
 </script>
         </search>
@@ -102,9 +102,9 @@ class CmDistributionModifier(Processor):
         },
     }
     output_variables = {}
-    
+
     __doc__ = description
-    
+
     def main(self):
         # Determine base_url, version, product_name.
         filename = self.env["distribution"]
@@ -114,7 +114,7 @@ class CmDistributionModifier(Processor):
         f.truncate()
         f.close()
         self.output("Distribution file overwritten")
-    
+
 
 if __name__ == "__main__":
     processor = CmDistributionModifier()
