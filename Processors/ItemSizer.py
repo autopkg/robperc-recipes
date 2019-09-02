@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-from __future__ import absolute_import
-from autopkglib import Processor, ProcessorError
+from __future__ import absolute_import, division
+
 import os
+
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["ItemSizer"]
 
@@ -19,12 +21,12 @@ class ItemSizer(Processor):
             "description": "Size of specified item in kibibytes (KiB).",
         },
     }
-    
+
     __doc__ = description
-    
+
     def main(self):
         item_path = self.env["item_path"]
-        
+
         self.env["item_size"] = str(os.path.getsize(item_path) / 1024)
 
 if __name__ == "__main__":
