@@ -208,7 +208,7 @@ def pref(prefname):
     """Returns a preference for prefname"""
     try:
         _prefs = FoundationPlist.readPlist(PREFSPATH)
-    except Exception:
+    except BaseException:
         return None
     if prefname in _prefs:
         return _prefs[prefname]
