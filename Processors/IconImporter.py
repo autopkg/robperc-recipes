@@ -15,16 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
-from __future__ import print_function
-import sys
-sys.path.append('/usr/local/munki')
+from __future__ import absolute_import, print_function
+
 import os
-from optparse import OptionParser
-from munkilib import munkicommon
-from munkilib import FoundationPlist
-from munkilib import iconutils
+import sys
+
 from autopkglib import Processor, ProcessorError
+
+sys.path.append('/usr/local/munki')
+from munkilib import FoundationPlist, iconutils, munkicommon
 
 __all__ = ["IconImporter"]
 
@@ -33,12 +32,12 @@ class IconImporter(Processor):
     input_variables = {
         "MUNKI_REPO": {
             "required": True,
-            "description": 
+            "description":
                 "Path to target repo.",
         },
         "name": {
             "required": True,
-            "description": 
+            "description":
                 "Name of target to fetch icon(s) for. Should correspond to value of name key in pkginfo",
         },
         "force": {
@@ -50,7 +49,7 @@ class IconImporter(Processor):
     output_variables = {}
 
     __doc__ = description
-    
+
     def main(self):
         repo = self.env["MUNKI_REPO"]
         name = self.env["name"]
@@ -63,15 +62,15 @@ class IconImporter(Processor):
         munkicommon.cleanUpTmpDir()
 
 """
-The following code is from Greg Neagle's iconimporter tool. 
-Unfortunately it is not currently packaged by default with 
+The following code is from Greg Neagle's iconimporter tool.
+Unfortunately it is not currently packaged by default with
 munkitools so I can't import it from there like the rest of the
 modules...
 """
 
 PREFSNAME = 'com.googlecode.munki.munkiimport.plist'
 PREFSPATH = os.path.expanduser(os.path.join(u'~/Library/Preferences', PREFSNAME))
-        
+
 def generate_png_from_copy_from_dmg_item(install_item, repo_path):
     dmgpath = os.path.join(
         repo_path, 'pkgs', install_item['installer_item_location'])
@@ -146,7 +145,7 @@ def generate_pngs_from_installer_pkg(install_item, repo_path):
             index += 1
     else:
         print_utf8(u'\tNo application icons found.')
-        
+
 
 def findItemsToCheck(repo_path, itemlist=None):
     '''Builds a list of items to check; only the latest version

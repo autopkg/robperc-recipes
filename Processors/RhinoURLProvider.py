@@ -15,7 +15,6 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-import re
 
 from autopkglib import Processor, ProcessorError
 
@@ -35,9 +34,9 @@ class RhinoURLProvider(Processor):
             "description": "URL to the latest Rhino release download.",
         },
     }
-    
+
     __doc__ = description
-    
+
     def main(self):
         # Determine base_url, version, product_name.
         release_url = self.env["release_url"]
@@ -47,7 +46,7 @@ class RhinoURLProvider(Processor):
         major = str(float('.'.join(version.split('.')[:-1])))
         url = "http://files.mcneel.com/Releases/Rhino/MAJOR/Mac/Rhinoceros_VERSION.dmg".replace("MAJOR", major).replace("VERSION", version)
         self.env["rhino_url"] = url
-    
+
 
 if __name__ == "__main__":
     processor = RhinoURLProvider()

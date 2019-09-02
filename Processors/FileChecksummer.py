@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 from __future__ import absolute_import
-from autopkglib import Processor, ProcessorError
-import os
+
 import hashlib
+import os
+
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["FileChecksummer"]
 
