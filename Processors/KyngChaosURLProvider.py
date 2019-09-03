@@ -90,7 +90,7 @@ class KyngChaosURLProvider(Processor):
         try:
             f = urlopen(dmg_url)
             f.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't download %s: %s" % (dmg_url, e))
 
         # Return URL.
@@ -104,7 +104,7 @@ class KyngChaosURLProvider(Processor):
             f = urlopen(index_url)
             html = f.read()
             f.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't open %s: %s" % (index_url, e))
 
         # Create regex for finding newest version
