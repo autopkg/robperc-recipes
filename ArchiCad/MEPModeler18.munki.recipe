@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads MEPModeler17 dmg and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.robperc.munki.MEPModeler17</string>
+    <string>com.github.robperc.munki.MEPModeler18</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -88,7 +88,7 @@
 					<string>%NAME%</string>
 					<key>postinstall_script</key>
 					<string>#!/bin/sh
-			
+
 					LWPID=`ps axww | grep loginwindow | grep -v grep | awk '{print $1}'`
 
 					JAR="/tmp/MEP Modeler Installer.app/Contents/Resources/Java/archive.jar"
