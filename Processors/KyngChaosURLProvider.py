@@ -19,19 +19,14 @@ from __future__ import absolute_import
 
 import re
 
-from autopkglib import Processor, ProcessorError
-
-try:
-    from urllib.parse import urlopen  # For Python 3
-except ImportError:
-    from urllib2 import urlopen  # For Python 2
+from autopkglib import Processor, ProcessorError, URLGetter
 
 __all__ = ["KyngChaosURLProvider"]
 
 
 KYNGCHAOS_BASE_URL = "http://www.kyngchaos.com/files/software"
 
-class KyngChaosURLProvider(Processor):
+class KyngChaosURLProvider(URLGetter):
     description = "Provides URL to the latest KyngChaos downloads."
     input_variables = {
         "product_name": {
@@ -86,13 +81,6 @@ class KyngChaosURLProvider(Processor):
         # Construct download URL.
         dmg_url = "/".join((base_url, product_dir, filename))
 
-        # Try to open download link.
-        try:
-            f = urlopen(dmg_url)
-            f.close()
-        except Exception as e:
-            raise ProcessorError("Can't download %s: %s" % (dmg_url, e))
-
         # Return URL.
         return dmg_url
 
@@ -100,12 +88,7 @@ class KyngChaosURLProvider(Processor):
 
         # Read HTML index.
         index_url = "http://www.kyngchaos.com/software/" + product_dir
-        try:
-            f = urlopen(index_url)
-            html = f.read()
-            f.close()
-        except Exception as e:
-            raise ProcessorError("Can't open %s: %s" % (index_url, e))
+        html = self.download(index_url, text=True)
 
         # Create regex for finding newest version
         regex = re.escape(product_name) + r'-(?P<version>[^"]+)\.dmg"'
