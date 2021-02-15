@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads MEPModeler17 dmg and imports into Munki.</string>
+    <string>Downloads MEPModeler18 dmg and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.robperc.munki.MEPModeler17</string>
+    <string>com.github.robperc.munki.MEPModeler18</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
