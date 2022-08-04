@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/autopkg/python
 #
 # Copyright 2015 Rob percival
 # Built on Greg Neagle's iconimporter tool code
