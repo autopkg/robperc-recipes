@@ -45,7 +45,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.robperc.download.QGIS</string>
+    <string>com.github.mlbz521.download.QGIS</string>
     <key>Process</key>
     <array>
         <dict>
