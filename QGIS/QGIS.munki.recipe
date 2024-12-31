@@ -43,11 +43,20 @@
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>1.1</string>
     <key>ParentRecipe</key>
     <string>com.github.mlbz521.download.QGIS</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>Consider switching to the QGIS munki recipe in the dataJAR-recipes repo. This recipe is deprecated and will be removed in the future.</string>
+            </dict>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
